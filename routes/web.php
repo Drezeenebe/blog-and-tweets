@@ -23,4 +23,4 @@ Route::get('/entries/{entryBySlug}','GuestController@show');
 Route::put('/entries/{entry}', 'EntryController@update')->middleware('can:update,entry');
 Route::get('/entries/{entry}/edit','EntryController@edit')->middleware('can:update,entry');
 
-Route::get('/users/{user}','UserController@show');
+Route::get('@{user}','UserController@show');
