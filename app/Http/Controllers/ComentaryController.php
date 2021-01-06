@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comentary;
+use App\Entry;
 use Illuminate\Http\Request;
 
 class ComentaryController extends Controller
@@ -11,18 +12,20 @@ class ComentaryController extends Controller
         $this->middleware('auth');
     }
 
-    public function store(Request $request){
+    public function commentary_store(Request $request, Entry $entry){
+
         $validatedData = $request->validate([
-            'title' => 'required|min:2|max:3000'
+            'content' => 'required|min:2|max:3000'
         ]);
 
         $comentary = new Comentary();
-        $comentary->title=$validatedData['title'];
+        $comentary->content=$validatedData['content'];
         $comentary->user_id=auth()->id();
-        $comentary->entry_id=$request->get('entry_id');
+        $comentary->entry_id=$entry->id;
         $comentary->save();
 
-        $status = 'Your entry has been published successfully.';
+        $status = 'Your commentary has been published successfully.';
+
         return back()->with(compact('status'));
     }
 }

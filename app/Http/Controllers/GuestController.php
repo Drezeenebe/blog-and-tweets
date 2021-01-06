@@ -17,10 +17,9 @@ class GuestController extends Controller
         return view('welcome', compact('entries'));
     }
 
-    public function show (Entry $entry){
+    public function show(Entry $entry){
         $entries = Entry::with('user')
             ->orderByDesc('created_at')
-            ->orderByDesc('id')
             ->paginate(10);
         $comentaries = Comentary::where('entry_id',$entry->id)->paginate(2);
         return view('entries.show',compact('entry','comentaries'));

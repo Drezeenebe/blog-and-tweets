@@ -24,3 +24,6 @@ Route::put('/entries/{entry}', 'EntryController@update')->middleware('can:update
 Route::get('/entries/{entry}/edit','EntryController@edit')->middleware('can:update,entry');
 
 Route::get('@{user}','UserController@show');
+
+Route::post('/comentary/{entry}', 'ComentaryController@commentary_store')->name('commentary_store');
+
