@@ -57,6 +57,4 @@ class EntryController extends Controller
          return back()->with(compact('status'));
      }
 
-
-
 }

@@ -16,7 +16,7 @@ class EntriesTableSeeder extends Seeder
         $users = User::all();
 
         $users->each(function ($user){
-            factory(Entry::class,10)->create([
+            factory(Entry::class,5)->create([
                 'user_id'=>$user->id
             ]);
         });

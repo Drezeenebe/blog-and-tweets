@@ -28,6 +28,25 @@
                     Author: <a href="{{url('@'.$entry->user->username)}}"> {{$entry->user->name}}</a>
                 </div>
             </div>
+
+            <hr></hr>
+            <div class="card">
+                <div class="card-header">
+                  Comentarios
+                </div>
+                <div class="card-body">
+                    @foreach ($comentaries as $comentary)
+                        <blockquote class="blockquote mb-0 mt-4">
+                            <p>{{$comentary->content}}</p>
+                            <footer class="blockquote-footer">{{$comentary->user->name}} <b>Date: {{date("F j, Y, g:i a", strtotime($comentary->created_at))}}</b></footer>
+                            <hr>
+                        </blockquote>
+                    @endforeach
+                    <div class="row justify-content-center">{{$comentaries->links()}}
+                    </div>
+                </div>
+              </div>
+
         </div>
     </div>
 </div>
